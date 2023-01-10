@@ -18,3 +18,7 @@ for item in df.experience:
     lst.append(item)
   
 df.experience = lst
+
+# fill the missing value of column test_score with their median
+df.experience = lst
+df.test_score = df.test_score.fillna(df.test_score.median())
