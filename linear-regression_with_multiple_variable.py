@@ -16,9 +16,15 @@ for item in df.experience:
     lst.append(w2n.word_to_num(item))
   except:
     lst.append(item)
-  
-df.experience = lst
 
 # fill the missing value of column test_score with their median
 df.experience = lst
 df.test_score = df.test_score.fillna(df.test_score.median())
+
+
+# initialize the linear regression model and fit it
+reg = linear_model.LinearRegression()
+reg.fit(df[['experience', 'test_score', 'interview_score']], df.salary)
+
+# predict
+reg.predict([[12, 10, 10]])
